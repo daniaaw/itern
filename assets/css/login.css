@@ -1,0 +1,15 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+
+.bg-purple {
+    background: linear-gradient(135deg, var(--purple-primary), var(--purple-dark)) !important;
+}
+
+.text-purple {
+    color: var(--purple-primary) !important;
+}
+
+    
