@@ -1,0 +1,202 @@
+/* Custom CSS for itern Landing Page */
+
+:root {
+    --purple-primary: #8B5CF6;
+    --purple-dark: #7C3AED;
+    --purple-light: #A855F7;
+    --warning-color: #FFC107;
+}
+
+/* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+/* Utility Classes */
+.bg-purple {
+    background: linear-gradient(135deg, var(--purple-primary), var(--purple-dark)) !important;
+}
+
+.text-purple {
+    color: var(--purple-primary) !important;
+}
+
+.btn-purple {
+    background-color: var(--purple-primary);
+    border-color: var(--purple-primary);
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-purple:hover {
+    background-color: var(--purple-dark);
+    border-color: var(--purple-dark);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Navbar Styles */
+.navbar {
+    padding: 1rem 0;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Remove the white filter from logo when navbar is white */
+.navbar-light .navbar-brand img {
+    filter: none;
+}
+
+/* Hero Section */
+.hero-section {
+    padding-top: 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.9), rgba(124, 58, 237, 0.9));
+    z-index: -1;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-content .text-warning {
+    color: var(--warning-color) !important;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Feature Cards */
+.feature-card {
+    transition: all 0.3s ease;
+    border: 1px solid rgba(139, 92, 246, 0.1);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2) !important;
+    border-color: var(--purple-light);
+}
+
+.feature-icon {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.feature-card h4 {
+    color: var(--purple-dark);
+    font-size: 1.2rem;
+}
+
+/* Section Spacing */
+section {
+    padding: 5rem 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .display-5 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-section {
+        padding-top: 120px;
+    }
+    
+    .hero-content {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    
+    section {
+        padding: 3rem 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .feature-card {
+        margin-bottom: 2rem;
+    }
+    
+    .btn-lg {
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+    }
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Button Animations */
+.btn {
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Footer Styles */
+footer {
+    background-color: #ffffff !important;
+    border-top: 1px solid #e9ecef;
+}
+
+footer img {
+    filter: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--purple-primary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--purple-dark);
+}
