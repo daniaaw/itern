@@ -1,0 +1,288 @@
+:root {
+    --purple-primary: #8B5CF6;
+    --purple-dark: #7C3AED;
+    --purple-light: #A855F7;
+    --teal-color: #20D9BA;
+    --card-bg: rgba(255, 255, 255, 0.9);
+}
+
+/* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.bg-purple {
+    background: linear-gradient(135deg, var(--purple-primary), var(--purple-dark)) !important;
+}
+
+/* Navbar Styles */
+.navbar {
+    background: transparent;
+    padding: 1rem 0;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    border-radius: 20px;
+}
+
+.logo-text {
+    color: white;
+    line-height: 1.2;
+}
+
+.logo-text span {
+    font-size: 1.2rem;
+}
+
+.logo-text small {
+    font-size: 0.7rem;
+    opacity: 0.9;
+}
+
+/* Dropdown Buttons */
+.btn-outline-light {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: 25px;
+}
+
+.btn-outline-light:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Job Detail Card */
+.job-detail-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Job Header */
+.job-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.company-logo-large {
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.company-logo-img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.job-info h2.job-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.job-info h3.company-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #666;
+    margin: 0;
+}
+
+/* Job Details */
+.job-details {
+    padding: 20px 0;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.detail-item i {
+    color: var(--purple-primary);
+    font-size: 1.2rem;
+    width: 20px;
+    text-align: center;
+}
+
+.salary {
+    font-weight: 600;
+    color: #333;
+}
+
+/* Apply Button */
+.apply-section {
+    padding-top: 20px;
+    border-top: 1px solid #e9ecef;
+}
+
+.btn-apply {
+    background-color: var(--teal-color);
+    border: none;
+    color: #333;
+    font-weight: 700;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-apply:hover {
+    background-color: #1BB5A3;
+    color: #333;
+    transform: translateY(-2px);
+}
+
+/* Benefits Card */
+.benefits-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    height: fit-content;
+}
+
+.benefits-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Benefit Items */
+.benefit-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    align-items: flex-start;
+}
+
+.benefit-number {
+    background: var(--purple-primary);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.benefit-content h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.benefit-content p {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* Profile Icon */
+.profile-icon {
+    margin-left: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .job-detail-card,
+    .benefits-card {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch !important;
+    }
+    
+    .navbar-nav .dropdown {
+        margin: 0 !important;
+    }
+    
+    .logo-container {
+        gap: 8px;
+        padding: 6px 12px;
+    }
+    
+    .logo-text span {
+        font-size: 1rem;
+    }
+    
+    .job-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .job-info h2.job-title {
+        font-size: 1.5rem;
+    }
+    
+    .job-info h3.company-name {
+        font-size: 1.1rem;
+    }
+    
+    .detail-item {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .job-detail-card,
+    .benefits-card {
+        padding: 20px;
+    }
+    
+    .company-logo-large {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .company-logo-img {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .job-info h2.job-title {
+        font-size: 1.3rem;
+    }
+    
+    .benefits-title {
+        font-size: 1.3rem;
+    }
+}
