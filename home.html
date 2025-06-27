@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>itern - Home Dashboard</title>
+    <link rel="icon" href="assets/img/icon.png" type="image/png">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="assets/css/home.css" rel="stylesheet">
+</head>
+<body class="bg-purple">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid px-4">
+            <!-- Logo -->
+            <div class="navbar-brand">
+                <div class="logo-container">
+                    <img src="assets/img/logo.png" alt="itern Logo" height="50">
+                </div>
+            </div>
+            
+            <!-- Navigation Dropdowns -->
+            <div class="navbar-nav ms-auto d-flex flex-row align-items-center">
+                <!-- Laporan Dropdown -->
+                <div class="dropdown me-3">
+                    <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        Laporan
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Laporan Magang</a></li>
+                        <li><a class="dropdown-item" href="#">Cetak Sertifikat</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Magang Dropdown -->
+                <div class="dropdown me-3">
+                    <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        Magang
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Pendaftaran Magang</a></li>
+                        <li><a class="dropdown-item" href="#">Info Magang</a></li>
+                        <li><a class="dropdown-item" href="#">Bimbingan Magang</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Profile Icon -->
+                <div class="profile-icon">
+                    <i class="bi bi-person-circle fs-2 text-white"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid px-4 py-4">
+        <!-- Search Section -->
+        <div class="search-section text-center mb-5">
+            <h1 class="text-white fw-bold mb-4">Cari 30,000+ loker di Indonesia</h1>
+            <div class="row justify-content-center">
+                <div class="col-md-5 mb-3 mb-md-0">
+                    <div class="search-input">
+                        <i class="bi bi-briefcase"></i>
+                        <input type="text" class="form-control" placeholder="Cari Nama Pekerjaan, Skill, dan Perusahaan">
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="search-input">
+                        <i class="bi bi-geo-alt"></i>
+                        <input type="text" class="form-control" placeholder="Semua kota/provinsi">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Job Cards Section -->
+        <div class="row g-4">
+            <!-- Job Card 1 -->
+            <div class="col-md-6">
+                <div class="job-card">
+                    <div class="job-header">
+                        <span class="job-title">Programmer</span>
+                        <span class="job-salary">Gaji Tidak Ditampilkan</span>
+                    </div>
+                    <div class="job-tags mb-3">
+                        <span class="badge badge-premium">Perusahaan Premium</span>
+                        <span class="badge badge-time">Paruh Waktu</span>
+                        <span class="badge badge-experience">1 - 3 Tahun</span>
+                    </div>
+                    <div class="job-skills mb-3">
+                        <span class="skill-tag">Minimal Sarjana (S1)</span>
+                        <span class="skill-tag">Frontend Developer</span>
+                        <span class="skill-tag">+3</span>
+                    </div>
+                    <div class="company-info">
+                        <div class="company-logo">
+                            <i class="bi bi-building text-warning"></i>
+                        </div>
+                        <div class="company-details">
+                            <div class="company-name">PT. WIJAYA PRAWIRA PERKASA</div>
+                            <div class="company-location">
+                                <i class="bi bi-geo-alt"></i>
+                                Dukuh Pakis, Surabaya, Jawa Timur
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-posted">8 Jam Yang Lalu</div>
+                </div>
+            </div>
+
+            <!-- Job Card 2 -->
+            <div class="col-md-6">
+                <div class="job-card">
+                    <div class="job-header">
+                        <span class="job-title">Programmer</span>
+                        <span class="job-salary">Gaji Tidak Ditampilkan</span>
+                    </div>
+                    <div class="job-tags mb-3">
+                        <span class="badge badge-premium">Perusahaan Premium</span>
+                        <span class="badge badge-time">Paruh Waktu</span>
+                        <span class="badge badge-experience">1 - 3 Tahun</span>
+                    </div>
+                    <div class="job-skills mb-3">
+                        <span class="skill-tag">Minimal Sarjana (S1)</span>
+                        <span class="skill-tag">Frontend Developer</span>
+                        <span class="skill-tag">+3</span>
+                    </div>
+                    <div class="company-info">
+                        <div class="company-logo">
+                            <i class="bi bi-building text-danger"></i>
+                        </div>
+                        <div class="company-details">
+                            <div class="company-name">PT. WIJAYA PRAWIRA PERKASA</div>
+                            <div class="company-location">
+                                <i class="bi bi-geo-alt"></i>
+                                Dukuh Pakis, Surabaya, Jawa Timur
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-posted">8 Jam Yang Lalu</div>
+                </div>
+            </div>
+
+            <!-- Job Card 3 -->
+            <div class="col-md-6">
+                <div class="job-card">
+                    <div class="job-header">
+                        <span class="job-title">Programmer</span>
+                        <span class="job-salary">Gaji Tidak Ditampilkan</span>
+                    </div>
+                    <div class="job-tags mb-3">
+                        <span class="badge badge-premium">Perusahaan Premium</span>
+                        <span class="badge badge-time">Paruh Waktu</span>
+                        <span class="badge badge-experience">1 - 3 Tahun</span>
+                    </div>
+                    <div class="job-skills mb-3">
+                        <span class="skill-tag">Minimal Sarjana (S1)</span>
+                        <span class="skill-tag">Frontend Developer</span>
+                        <span class="skill-tag">+3</span>
+                    </div>
+                    <div class="company-info">
+                        <div class="company-logo">
+                            <i class="bi bi-building text-warning"></i>
+                        </div>
+                        <div class="company-details">
+                            <div class="company-name">PT. WIJAYA PRAWIRA PERKASA</div>
+                            <div class="company-location">
+                                <i class="bi bi-geo-alt"></i>
+                                Dukuh Pakis, Surabaya, Jawa Timur
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-posted">8 Jam Yang Lalu</div>
+                </div>
+            </div>
+
+            <!-- Job Card 4 -->
+            <div class="col-md-6">
+                <div class="job-card">
+                    <div class="job-header">
+                        <span class="job-title">Programmer</span>
+                        <span class="job-salary">Gaji Tidak Ditampilkan</span>
+                    </div>
+                    <div class="job-tags mb-3">
+                        <span class="badge badge-premium">Perusahaan Premium</span>
+                        <span class="badge badge-time">Paruh Waktu</span>
+                        <span class="badge badge-experience">1 - 3 Tahun</span>
+                    </div>
+                    <div class="job-skills mb-3">
+                        <span class="skill-tag">Minimal Sarjana (S1)</span>
+                        <span class="skill-tag">Frontend Developer</span>
+                        <span class="skill-tag">+3</span>
+                    </div>
+                    <div class="company-info">
+                        <div class="company-logo">
+                            <i class="bi bi-building text-danger"></i>
+                        </div>
+                        <div class="company-details">
+                            <div class="company-name">PT. WIJAYA PRAWIRA PERKASA</div>
+                            <div class="company-location">
+                                <i class="bi bi-geo-alt"></i>
+                                Dukuh Pakis, Surabaya, Jawa Timur
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-posted">8 Jam Yang Lalu</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
