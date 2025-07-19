@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>itern - Admin Dashboard</title>
+    <link rel="icon" href="assets/img/icon.png" type="image/png">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="assets/css/home-admin.css" rel="stylesheet">
+</head>
+
+<body class="bg-purple">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid px-4">
+            <!-- Logo -->
+            <div class="navbar-brand">
+                <div class="logo-container">
+                    <img src="assets/img/logo.png" alt="itern Logo" height="50">
+                </div>
+            </div>
+
+            <!-- Navigation Dropdowns -->
+            <div class="navbar-nav ms-auto d-flex flex-row align-items-center">
+                <div class="dropdown me-3">
+                    <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        Laporan
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="laporan-magang-admin.html">Laporan Magang</a></li>
+                        <li><a class="dropdown-item" href="cetak-sertifikat-admin.html">Cetak Sertifikat</a></li>
+                    </ul>
+                </div>
+                <!-- Profile Dropdown -->
+                <div class="dropdown">
+                    <button class="btn profile-dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="assets/img/icon.png" alt="Profile" class="profile-logo">
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="login.html">
+                                <i class="bi bi-box-arrow-right me-2"></i>Logout
+                            </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid px-4 py-4">
+        <!-- Page Header -->
+        <div class="page-header mb-5">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1 class="page-title">Data Mahasiswa Magang</h1>
+                    <p class="page-subtitle">Kelola dan pantau data mahasiswa yang mengikuti program magang</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search and Filter -->
+        <div class="search-filter-section mb-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="search-container">
+                        <i class="bi bi-search"></i>
+                        <input type="text" class="form-control search-input"
+                            placeholder="Cari berdasarkan nama, NIM, atau perusahaan..." id="searchInput">
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="filter-info">
+                        <span class="total-records">Total: <span id="totalRecords">3</span> mahasiswa</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Students Table -->
+        <div class="table-container">
+            <div class="table-responsive">
+                <table class="table table-striped" id="studentsTable">
+                    <thead>
+                        <tr>
+                            <th class="sortable" data-sort="id">
+                                ID
+                                <i class="bi bi-chevron-expand sort-icon"></i>
+                            </th>
+                            <th class="sortable" data-sort="nim">
+                                NIM
+                                <i class="bi bi-chevron-expand sort-icon"></i>
+                            </th>
+                            <th class="sortable" data-sort="nama">
+                                Nama Lengkap
+                                <i class="bi bi-chevron-expand sort-icon"></i>
+                            </th>
+                            <th class="sortable" data-sort="email">
+                                Email
+                                <i class="bi bi-chevron-expand sort-icon"></i>
+                            </th>
+                            <th class="sortable" data-sort="perusahaan">
+                                Perusahaan
+                                <i class="bi bi-chevron-expand sort-icon"></i>
+                            </th>
+                            <th class="sortable" data-sort="status">
+                                Status
+                                <i class="bi bi-chevron-expand sort-icon"></i>
+                            </th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr class="status-active">
+                            <td>001</td>
+                            <td>2021010001</td>
+                            <td class="student-name">Ahmad Rizki Pratama</td>
+                            <td class="student-email">ahmad.rizki@email.com</td>
+                            <td class="company-name">PT. WIJAYA PRAWIRA PERKASA</td>
+                            <td>
+                                <span class="status-badge status-aktif">Aktif</span>
+                            </td>
+                            <td class="action-cell">
+                                <div class="action-buttons">
+                                    <button class="btn btn-view" title="Lihat Detail">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-edit" title="Edit">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-delete" title="Hapus">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="status-active">
+                            <td>002</td>
+                            <td>2021010002</td>
+                            <td class="student-name">Siti Nurhaliza</td>
+                            <td class="student-email">siti.nurhaliza@email.com</td>
+                            <td class="company-name">PT. TEKNOLOGI DIGITAL INDONESIA</td>
+                            <td>
+                                <span class="status-badge status-aktif">Aktif</span>
+                            </td>
+                            <td class="action-cell">
+                                <div class="action-buttons">
+                                    <button class="btn btn-view" title="Lihat Detail">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-edit" title="Edit">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-delete" title="Hapus">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="status-completed">
+                            <td>003</td>
+                            <td>2021010003</td>
+                            <td class="student-name">Budi Santoso</td>
+                            <td class="student-email">budi.santoso@email.com</td>
+                            <td class="company-name">PT. INOVASI KREATIF NUSANTARA</td>
+                            <td>
+                                <span class="status-badge status-selesai">Selesai</span>
+                            </td>
+                            <td class="action-cell">
+                                <div class="action-buttons">
+                                    <button class="btn btn-view" title="Lihat Detail">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-edit" title="Edit">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-delete" title="Hapus">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- No results message -->
+            <div class="no-results" id="noResults">
+                <div class="text-center py-5">
+                    <i class="bi bi-search fs-1 text-muted"></i>
+                    <h5 class="mt-3 text-muted">Tidak ada data yang ditemukan</h5>
+                    <p class="text-muted">Coba ubah kata kunci pencarian Anda</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Student Modal -->
+    <div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="addStudentModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addStudentModalLabel">
+                        <i class="bi bi-plus-circle me-2"></i>Tambah Mahasiswa Baru
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addStudentForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="studentNIM" class="form-label">NIM</label>
+                                <input type="text" class="form-control" id="studentNIM" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="studentName" class="form-label">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="studentName" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="studentEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="studentEmail" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="studentCompany" class="form-label">Perusahaan</label>
+                            <input type="text" class="form-control" id="studentCompany" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="studentStatus" class="form-label">Status</label>
+                            <select class="form-select" id="studentStatus" required>
+                                <option value="">Pilih Status</option>
+                                <option value="Aktif">Aktif</option>
+                                <option value="Selesai">Selesai</option>
+                                <option value="Pending">Pending</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="studentPhone" class="form-label">Nomor Telepon</label>
+                            <input type="tel" class="form-control" id="studentPhone">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="studentAddress" class="form-label">Alamat</label>
+                            <textarea class="form-control" id="studentAddress" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" form="addStudentForm" class="btn btn-primary">Simpan Data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Student data for sorting and searching
+        let studentData = [
+            {
+                id: '001',
+                nim: '2021010001',
+                nama: 'Ahmad Rizki Pratama',
+                email: 'ahmad.rizki@email.com',
+                perusahaan: 'PT. WIJAYA PRAWIRA PERKASA',
+                status: 'Aktif',
+                statusClass: 'status-aktif',
+                rowClass: 'status-active'
+            },
+            {
+                id: '002',
+                nim: '2021010002',
+                nama: 'Siti Nurhaliza',
+                email: 'siti.nurhaliza@email.com',
+                perusahaan: 'PT. TEKNOLOGI DIGITAL INDONESIA',
+                status: 'Aktif',
+                statusClass: 'status-aktif',
+                rowClass: 'status-active'
+            },
+            {
+                id: '003',
+                nim: '2021010003',
+                nama: 'Budi Santoso',
+                email: 'budi.santoso@email.com',
+                perusahaan: 'PT. INOVASI KREATIF NUSANTARA',
+                status: 'Selesai',
+                statusClass: 'status-selesai',
+                rowClass: 'status-completed'
+            }
+        ];
+
+        let currentSort = { column: null, direction: 'asc' };
+        let filteredData = [...studentData];
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function (e) {
+            const searchTerm = e.target.value.toLowerCase();
+
+            filteredData = studentData.filter(student =>
+                student.nama.toLowerCase().includes(searchTerm) ||
+                student.nim.toLowerCase().includes(searchTerm) ||
+                student.email.toLowerCase().includes(searchTerm) ||
+                student.perusahaan.toLowerCase().includes(searchTerm) ||
+                student.status.toLowerCase().includes(searchTerm)
+            );
+
+            renderTable();
+            updateRecordCount();
+        });
+
+        // Sort functionality
+        document.querySelectorAll('.sortable').forEach(header => {
+            header.addEventListener('click', function () {
+                const column = this.dataset.sort;
+
+                if (currentSort.column === column) {
+                    currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+                } else {
+                    currentSort.column = column;
+                    currentSort.direction = 'asc';
+                }
+
+                sortTable(column, currentSort.direction);
+                updateSortIcons();
+            });
+        });
+
+        function sortTable(column, direction) {
+            filteredData.sort((a, b) => {
+                let aVal = a[column];
+                let bVal = b[column];
+
+                if (column === 'id') {
+                    aVal = parseInt(aVal);
+                    bVal = parseInt(bVal);
+                }
+
+                if (direction === 'asc') {
+                    return aVal < bVal ? -1 : aVal > bVal ? 1 : 0;
+                } else {
+                    return aVal > bVal ? -1 : aVal < bVal ? 1 : 0;
+                }
+            });
+
+            renderTable();
+        }
+
+        function updateSortIcons() {
+            document.querySelectorAll('.sort-icon').forEach(icon => {
+                icon.className = 'bi bi-chevron-expand sort-icon';
+            });
+
+            if (currentSort.column) {
+                const activeHeader = document.querySelector(`[data-sort="${currentSort.column}"] .sort-icon`);
+                if (activeHeader) {
+                    activeHeader.className = `bi bi-chevron-${currentSort.direction === 'asc' ? 'up' : 'down'} sort-icon active`;
+                }
+            }
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('tableBody');
+            const noResults = document.getElementById('noResults');
+
+            if (filteredData.length === 0) {
+                tbody.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            } else {
+                tbody.style.display = '';
+                noResults.style.display = 'none';
+            }
+
+            tbody.innerHTML = filteredData.map(student => `
+                <tr class="${student.rowClass}">
+                    <td>${student.id}</td>
+                    <td>${student.nim}</td>
+                    <td class="student-name">${student.nama}</td>
+                    <td class="student-email">${student.email}</td>
+                    <td class="company-name">${student.perusahaan}</td>
+                    <td>
+                        <span class="status-badge ${student.statusClass}">${student.status}</span>
+                    </td>
+                    <td class="action-cell">
+                        <div class="action-buttons">
+                            <button class="btn btn-view" title="Lihat Detail">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <button class="btn btn-edit" title="Edit">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <button class="btn btn-delete" title="Hapus">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function updateRecordCount() {
+            document.getElementById('totalRecords').textContent = filteredData.length;
+        }
+
+        // Add Student Form Submission
+        document.getElementById('addStudentForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const nim = document.getElementById('studentNIM').value;
+            const nama = document.getElementById('studentName').value;
+            const email = document.getElementById('studentEmail').value;
+            const perusahaan = document.getElementById('studentCompany').value;
+            const status = document.getElementById('studentStatus').value;
+
+            const newId = String(studentData.length + 1).padStart(3, '0');
+            const newStudent = {
+                id: newId,
+                nim: nim,
+                nama: nama,
+                email: email,
+                perusahaan: perusahaan,
+                status: status,
+                statusClass: getStatusClass(status),
+                rowClass: getRowClass(status)
+            };
+
+            studentData.push(newStudent);
+            filteredData = [...studentData];
+
+            renderTable();
+            updateRecordCount();
+
+            const modal = bootstrap.Modal.getInstance(document.getElementById('addStudentModal'));
+            modal.hide();
+            document.getElementById('addStudentForm').reset();
+
+            alert('Data mahasiswa berhasil ditambahkan!');
+        });
+
+        function getStatusClass(status) {
+            switch (status) {
+                case 'Aktif': return 'status-aktif';
+                case 'Selesai': return 'status-selesai';
+                case 'Pending': return 'status-pending';
+                default: return 'status-pending';
+            }
+        }
+
+        function getRowClass(status) {
+            switch (status) {
+                case 'Aktif': return 'status-active';
+                case 'Selesai': return 'status-completed';
+                case 'Pending': return 'status-pending';
+                default: return 'status-pending';
+            }
+        }
+
+        // Initialize table
+        renderTable();
+    </script>
+</body>
+
+</html>

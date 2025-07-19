@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>itern - Kelola Laporan Magang</title>
+    <link rel="icon" href="assets/img/logo.png" type="image/png">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="assets/css/laporan-magang-admin.css" rel="stylesheet">
+</head>
+
+<body class="bg-purple">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid px-4">
+            <!-- Logo -->
+            <div class="navbar-brand">
+                <div class="logo-container">
+                    <img src="assets/img/logo.png" alt="itern Logo" height="50" onclick="location.href='home-admin.html'">
+                </div>
+            </div>
+
+            <!-- Navigation Dropdowns -->
+            <div class="navbar-nav ms-auto d-flex flex-row align-items-center">
+                <div class="dropdown me-3">
+                    <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        Laporan
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="laporan-magang-admin.html">Laporan Magang</a></li>
+                        <li><a class="dropdown-item" href="cetak-sertifikat-admin.html">Cetak Sertifikat</a></li>
+                    </ul>
+                </div>
+                <!-- Profile Dropdown -->
+                <div class="dropdown">
+                    <button class="btn profile-dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="assets/img/icon.png" alt="Profile" class="profile-logo">
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="login.html">
+                                <i class="bi bi-box-arrow-right me-2"></i>Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid px-4 py-4">
+        <!-- Page Header -->
+        <div class="page-header mb-5">
+            <div class="row align-items-center">
+                <div class="col-md-12">
+                    <h1 class="page-title">Kelola Laporan Magang</h1>
+                    <p class="page-subtitle">Kelola, beri nilai, dan berikan komentar terhadap laporan magang mahasiswa
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search and Filter -->
+        <div class="search-filter-section mb-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="search-container">
+                        <i class="bi bi-search"></i>
+                        <input type="text" class="form-control search-input"
+                            placeholder="Cari berdasarkan nama mahasiswa, kegiatan, atau status..." id="searchInput">
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="filter-info">
+                        <span class="total-records">Total: <span id="totalRecords">3</span> laporan</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reports Table -->
+        <div class="table-container">
+            <div class="table-responsive">
+                <table class="table table-striped" id="laporanTable">
+                    <thead>
+                        <tr>
+                            <th class="sortable" data-sort="id">
+                                ID
+                                <i class="bi bi-chevron-expand sort-icon"></i>
+                            </th>
+                            <th class="sortable" data-sort="mahasiswa">
+                                Nama Mahasiswa
+                                <i class="bi bi-chevron-expand sort-icon"></i>
+                            </th>
+                            <th class="sortable" data-sort="tanggal">
+                                Tanggal
+                                <i class="bi bi-chevron-expand sort-icon"></i>
+                            </th>
+                            <th class="sortable" data-sort="kegiatan">
+                                Kegiatan
+                                <i class="bi bi-chevron-expand sort-icon"></i>
+                            </th>
+                            <th class="sortable" data-sort="nilai">
+                                Nilai
+                                <i class="bi bi-chevron-expand sort-icon"></i>
+                            </th>
+                            <th class="sortable" data-sort="status">
+                                Status
+                                <i class="bi bi-chevron-expand sort-icon"></i>
+                            </th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr class="status-pending">
+                            <td>001</td>
+                            <td class="student-name">Ahmad Rizki Pratama</td>
+                            <td>
+                                <div class="date-time">
+                                    <div class="date">2025-07-15</div>
+                                    <div class="time">09:00:00</div>
+                                </div>
+                            </td>
+                            <td class="activity-description">Mengembangkan fitur login sistem</td>
+                            <td class="grade-cell">
+                                <span class="grade-badge grade-none">Belum Dinilai</span>
+                            </td>
+                            <td>
+                                <span class="status-badge status-pending">Review</span>
+                            </td>
+                            <td class="action-cell">
+                                <div class="action-buttons">
+                                    <button class="btn btn-view" title="Lihat Detail" onclick="viewReport(1)">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-grade" title="Beri Nilai" onclick="gradeReport(1)">
+                                        <i class="bi bi-star"></i>
+                                    </button>
+                                    <button class="btn btn-comment" title="Komentar" onclick="commentReport(1)">
+                                        <i class="bi bi-chat-dots"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="status-completed">
+                            <td>002</td>
+                            <td class="student-name">Siti Nurhaliza</td>
+                            <td>
+                                <div class="date-time">
+                                    <div class="date">2025-07-14</div>
+                                    <div class="time">14:30:00</div>
+                                </div>
+                            </td>
+                            <td class="activity-description">Membuat dokumentasi API</td>
+                            <td class="grade-cell">
+                                <span class="grade-badge grade-a">A (85)</span>
+                            </td>
+                            <td>
+                                <span class="status-badge status-approved">Disetujui</span>
+                            </td>
+                            <td class="action-cell">
+                                <div class="action-buttons">
+                                    <button class="btn btn-view" title="Lihat Detail" onclick="viewReport(2)">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-grade" title="Edit Nilai" onclick="gradeReport(2)">
+                                        <i class="bi bi-star-fill"></i>
+                                    </button>
+                                    <button class="btn btn-comment" title="Komentar" onclick="commentReport(2)">
+                                        <i class="bi bi-chat-dots-fill"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="status-active">
+                            <td>003</td>
+                            <td class="student-name">Budi Santoso</td>
+                            <td>
+                                <div class="date-time">
+                                    <div class="date">2025-07-13</div>
+                                    <div class="time">11:15:00</div>
+                                </div>
+                            </td>
+                            <td class="activity-description">Testing aplikasi mobile</td>
+                            <td class="grade-cell">
+                                <span class="grade-badge grade-b">B (75)</span>
+                            </td>
+                            <td>
+                                <span class="status-badge status-revision">Revisi</span>
+                            </td>
+                            <td class="action-cell">
+                                <div class="action-buttons">
+                                    <button class="btn btn-view" title="Lihat Detail" onclick="viewReport(3)">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-grade" title="Edit Nilai" onclick="gradeReport(3)">
+                                        <i class="bi bi-star-fill"></i>
+                                    </button>
+                                    <button class="btn btn-comment" title="Komentar" onclick="commentReport(3)">
+                                        <i class="bi bi-chat-dots-fill"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- No results message -->
+            <div class="no-results" id="noResults">
+                <div class="text-center py-5">
+                    <i class="bi bi-search fs-1 text-muted"></i>
+                    <h5 class="mt-3 text-muted">Tidak ada data yang ditemukan</h5>
+                    <p class="text-muted">Coba ubah kata kunci pencarian Anda</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grade Report Modal -->
+    <div class="modal fade" id="gradeModal" tabindex="-1" aria-labelledby="gradeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="gradeModalLabel">
+                        <i class="bi bi-star me-2"></i>Beri Nilai Laporan
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="gradeForm">
+                        <div class="mb-3">
+                            <label class="form-label"><strong>Mahasiswa:</strong> <span
+                                    id="gradingStudentName">-</span></label>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label"><strong>Kegiatan:</strong> <span
+                                    id="gradingActivity">-</span></label>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="gradeValue" class="form-label">Nilai (0-100)</label>
+                                <input type="number" class="form-control" id="gradeValue" min="0" max="100" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="gradeLetter" class="form-label">Grade</label>
+                                <select class="form-select" id="gradeLetter" required>
+                                    <option value="">Pilih Grade</option>
+                                    <option value="A">A (Sangat Baik)</option>
+                                    <option value="B">B (Baik)</option>
+                                    <option value="C">C (Cukup)</option>
+                                    <option value="D">D (Kurang)</option>
+                                    <option value="E">E (Sangat Kurang)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="gradeNotes" class="form-label">Catatan Penilaian</label>
+                            <textarea class="form-control" id="gradeNotes" rows="4"
+                                placeholder="Berikan catatan tentang penilaian ini..."></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="reportStatus" class="form-label">Status Laporan</label>
+                            <select class="form-select" id="reportStatus" required>
+                                <option value="Disetujui">Disetujui</option>
+                                <option value="Revisi">Perlu Revisi</option>
+                                <option value="Review">Dalam Review</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" form="gradeForm" class="btn btn-primary">Simpan Nilai</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comment Modal -->
+    <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="commentModalLabel">
+                        <i class="bi bi-chat-dots me-2"></i>Komentar Laporan
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Mahasiswa:</strong> <span
+                                id="commentStudentName">-</span></label>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Kegiatan:</strong> <span id="commentActivity">-</span></label>
+                    </div>
+
+                    <!-- Existing Comments -->
+                    <div class="mb-4">
+                        <h6>Komentar Sebelumnya:</h6>
+                        <div id="existingComments" class="comments-container">
+                            <div class="comment-item">
+                                <div class="comment-header">
+                                    <strong>Admin</strong>
+                                    <small class="text-muted">15 Juli 2025, 10:30</small>
+                                </div>
+                                <div class="comment-text">Laporan sudah baik, namun perlu ditambahkan detail
+                                    implementasi.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- New Comment Form -->
+                    <form id="commentForm">
+                        <div class="mb-3">
+                            <label for="newComment" class="form-label">Tambah Komentar Baru</label>
+                            <textarea class="form-control" id="newComment" rows="4"
+                                placeholder="Tulis komentar Anda di sini..." required></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="submit" form="commentForm" class="btn btn-primary">Tambah Komentar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Report Modal -->
+    <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewModalLabel">
+                        <i class="bi bi-eye me-2"></i>Detail Laporan Magang
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Informasi Mahasiswa</h6>
+                            <table class="table table-borderless">
+                                <tr>
+                                    <td><strong>Nama:</strong></td>
+                                    <td id="viewStudentName">-</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>NIM:</strong></td>
+                                    <td id="viewStudentNIM">-</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Perusahaan:</strong></td>
+                                    <td id="viewCompany">-</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Detail Laporan</h6>
+                            <table class="table table-borderless">
+                                <tr>
+                                    <td><strong>Tanggal:</strong></td>
+                                    <td id="viewDate">-</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Waktu:</strong></td>
+                                    <td id="viewTime">-</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Status:</strong></td>
+                                    <td id="viewStatus">-</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <h6>Deskripsi Kegiatan</h6>
+                        <div class="card">
+                            <div class="card-body" id="viewActivity">-</div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <h6>Bukti Kegiatan</h6>
+                        <div id="viewEvidence" class="evidence-container">
+                            <button class="btn btn-outline-primary">
+                                <i class="bi bi-file-earmark-text me-2"></i>Lihat File Bukti
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <h6>Penilaian</h6>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <strong>Nilai:</strong> <span id="viewGrade">Belum Dinilai</span>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <strong>Catatan:</strong> <span id="viewGradeNotes">-</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-warning" onclick="gradeFromView()">Beri Nilai</button>
+                    <button type="button" class="btn btn-info" onclick="commentFromView()">Tambah Komentar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Report Modal -->
+    <div class="modal fade" id="addReportModal" tabindex="-1" aria-labelledby="addReportModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addReportModalLabel">
+                        <i class="bi bi-plus-circle me-2"></i>Tambahkan Laporan Magang
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addReportForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="reportDate" class="form-label">Tanggal Kegiatan</label>
+                                <input type="date" class="form-control" id="reportDate" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="reportTime" class="form-label">Waktu Kegiatan</label>
+                                <input type="time" class="form-control" id="reportTime" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="activityDescription" class="form-label">Rincian Kegiatan</label>
+                            <textarea class="form-control" id="activityDescription" rows="4"
+                                placeholder="Deskripsikan kegiatan yang dilakukan..." required></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="evidenceFile" class="form-label">Bukti Kegiatan</label>
+                            <input type="file" class="form-control" id="evidenceFile" accept="image/*,.pdf,.doc,.docx"
+                                required>
+                            <div class="form-text">Format yang didukung: Gambar (JPG, PNG), PDF, Word Document</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="reportStatus" class="form-label">Status</label>
+                            <select class="form-select" id="reportStatus" required>
+                                <option value="">Pilih Status</option>
+                                <option value="Selesai">Selesai</option>
+                                <option value="Dalam Proses">Dalam Proses</option>
+                                <option value="Pending">Pending</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="additionalNotes" class="form-label">Catatan Tambahan (Opsional)</label>
+                            <textarea class="form-control" id="additionalNotes" rows="3"
+                                placeholder="Tambahkan catatan jika diperlukan..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" form="addReportForm" class="btn btn-primary">Simpan Laporan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Table data for admin report management
+        let tableData = [
+            {
+                id: '001',
+                mahasiswa: 'Ahmad Rizki Pratama',
+                nim: '2021010001',
+                perusahaan: 'PT. WIJAYA PRAWIRA PERKASA',
+                tanggal: '2025-07-15 09:00:00',
+                kegiatan: 'Mengembangkan fitur login sistem',
+                nilai: null,
+                grade: null,
+                status: 'Review',
+                statusClass: 'status-pending',
+                rowClass: 'status-pending',
+                gradeClass: 'grade-none',
+                gradeText: 'Belum Dinilai',
+                notes: '',
+                comments: [
+                    {
+                        author: 'Admin',
+                        date: '15 Juli 2025, 10:30',
+                        text: 'Laporan sudah baik, namun perlu ditambahkan detail implementasi.'
+                    }
+                ]
+            },
+            {
+                id: '002',
+                mahasiswa: 'Siti Nurhaliza',
+                nim: '2021010002',
+                perusahaan: 'PT. TEKNOLOGI DIGITAL INDONESIA',
+                tanggal: '2025-07-14 14:30:00',
+                kegiatan: 'Membuat dokumentasi API',
+                nilai: 85,
+                grade: 'A',
+                status: 'Disetujui',
+                statusClass: 'status-approved',
+                rowClass: 'status-completed',
+                gradeClass: 'grade-a',
+                gradeText: 'A (85)',
+                notes: 'Dokumentasi lengkap dan terstruktur dengan baik.',
+                comments: [
+                    {
+                        author: 'Admin',
+                        date: '14 Juli 2025, 16:00',
+                        text: 'Excellent work! Dokumentasi sangat membantu tim development.'
+                    }
+                ]
+            },
+            {
+                id: '003',
+                mahasiswa: 'Budi Santoso',
+                nim: '2021010003',
+                perusahaan: 'PT. INOVASI KREATIF NUSANTARA',
+                tanggal: '2025-07-13 11:15:00',
+                kegiatan: 'Testing aplikasi mobile',
+                nilai: 75,
+                grade: 'B',
+                status: 'Revisi',
+                statusClass: 'status-revision',
+                rowClass: 'status-active',
+                gradeClass: 'grade-b',
+                gradeText: 'B (75)',
+                notes: 'Testing cukup baik, namun perlu ditambahkan test case edge cases.',
+                comments: [
+                    {
+                        author: 'Admin',
+                        date: '13 Juli 2025, 15:20',
+                        text: 'Perlu menambahkan test case untuk scenario error handling.'
+                    }
+                ]
+            }
+        ];
+
+        let currentSort = { column: null, direction: 'asc' };
+        let filteredData = [...tableData];
+        let currentReportId = null;
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function (e) {
+            const searchTerm = e.target.value.toLowerCase();
+
+            filteredData = tableData.filter(row =>
+                row.mahasiswa.toLowerCase().includes(searchTerm) ||
+                row.kegiatan.toLowerCase().includes(searchTerm) ||
+                row.status.toLowerCase().includes(searchTerm) ||
+                row.perusahaan.toLowerCase().includes(searchTerm) ||
+                row.id.toLowerCase().includes(searchTerm)
+            );
+
+            renderTable();
+            updateRecordCount();
+        });
+
+        // Sort functionality
+        document.querySelectorAll('.sortable').forEach(header => {
+            header.addEventListener('click', function () {
+                const column = this.dataset.sort;
+
+                if (currentSort.column === column) {
+                    currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+                } else {
+                    currentSort.column = column;
+                    currentSort.direction = 'asc';
+                }
+
+                sortTable(column, currentSort.direction);
+                updateSortIcons();
+            });
+        });
+
+        function sortTable(column, direction) {
+            filteredData.sort((a, b) => {
+                let aVal = a[column];
+                let bVal = b[column];
+
+                if (column === 'tanggal') {
+                    aVal = new Date(aVal);
+                    bVal = new Date(bVal);
+                } else if (column === 'id' || column === 'nilai') {
+                    aVal = parseInt(aVal) || 0;
+                    bVal = parseInt(bVal) || 0;
+                }
+
+                if (direction === 'asc') {
+                    return aVal < bVal ? -1 : aVal > bVal ? 1 : 0;
+                } else {
+                    return aVal > bVal ? -1 : aVal < bVal ? 1 : 0;
+                }
+            });
+
+            renderTable();
+        }
+
+        function updateSortIcons() {
+            document.querySelectorAll('.sort-icon').forEach(icon => {
+                icon.className = 'bi bi-chevron-expand sort-icon';
+            });
+
+            if (currentSort.column) {
+                const activeHeader = document.querySelector(`[data-sort="${currentSort.column}"] .sort-icon`);
+                if (activeHeader) {
+                    activeHeader.className = `bi bi-chevron-${currentSort.direction === 'asc' ? 'up' : 'down'} sort-icon active`;
+                }
+            }
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('tableBody');
+            const noResults = document.getElementById('noResults');
+
+            if (filteredData.length === 0) {
+                tbody.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            } else {
+                tbody.style.display = '';
+                noResults.style.display = 'none';
+            }
+
+            tbody.innerHTML = filteredData.map(row => {
+                const [date, time] = row.tanggal.split(' ');
+                return `
+                    <tr class="${row.rowClass}">
+                        <td>${row.id}</td>
+                        <td class="student-name">${row.mahasiswa}</td>
+                        <td>
+                            <div class="date-time">
+                                <div class="date">${date}</div>
+                                <div class="time">${time}</div>
+                            </div>
+                        </td>
+                        <td class="activity-description">${row.kegiatan}</td>
+                        <td class="grade-cell">
+                            <span class="grade-badge ${row.gradeClass}">${row.gradeText}</span>
+                        </td>
+                        <td>
+                            <span class="status-badge ${row.statusClass}">${row.status}</span>
+                        </td>
+                        <td class="action-cell">
+                            <div class="action-buttons">
+                                <button class="btn btn-view" title="Lihat Detail" onclick="viewReport('${row.id}')">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                                <button class="btn btn-grade" title="${row.nilai ? 'Edit Nilai' : 'Beri Nilai'}" onclick="gradeReport('${row.id}')">
+                                    <i class="bi bi-star${row.nilai ? '-fill' : ''}"></i>
+                                </button>
+                                <button class="btn btn-comment" title="Komentar" onclick="commentReport('${row.id}')">
+                                    <i class="bi bi-chat-dots${row.comments.length > 0 ? '-fill' : ''}"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function updateRecordCount() {
+            document.getElementById('totalRecords').textContent = filteredData.length;
+        }
+
+        // View Report Function
+        function viewReport(id) {
+            const report = tableData.find(r => r.id === id);
+            if (!report) return;
+
+            document.getElementById('viewStudentName').textContent = report.mahasiswa;
+            document.getElementById('viewStudentNIM').textContent = report.nim;
+            document.getElementById('viewCompany').textContent = report.perusahaan;
+
+            const [date, time] = report.tanggal.split(' ');
+            document.getElementById('viewDate').textContent = date;
+            document.getElementById('viewTime').textContent = time;
+            document.getElementById('viewStatus').innerHTML = `<span class="status-badge ${report.statusClass}">${report.status}</span>`;
+            document.getElementById('viewActivity').textContent = report.kegiatan;
+            document.getElementById('viewGrade').textContent = report.gradeText;
+            document.getElementById('viewGradeNotes').textContent = report.notes || '-';
+
+            currentReportId = id;
+            new bootstrap.Modal(document.getElementById('viewModal')).show();
+        }
+
+        // Grade Report Function
+        function gradeReport(id) {
+            const report = tableData.find(r => r.id === id);
+            if (!report) return;
+
+            document.getElementById('gradingStudentName').textContent = report.mahasiswa;
+            document.getElementById('gradingActivity').textContent = report.kegiatan;
+
+            if (report.nilai) {
+                document.getElementById('gradeValue').value = report.nilai;
+                document.getElementById('gradeLetter').value = report.grade;
+                document.getElementById('gradeNotes').value = report.notes;
+            }
+            document.getElementById('reportStatus').value = report.status;
+
+            currentReportId = id;
+            new bootstrap.Modal(document.getElementById('gradeModal')).show();
+        }
+
+        // Comment Report Function
+        function commentReport(id) {
+            const report = tableData.find(r => r.id === id);
+            if (!report) return;
+
+            document.getElementById('commentStudentName').textContent = report.mahasiswa;
+            document.getElementById('commentActivity').textContent = report.kegiatan;
+
+            // Render existing comments
+            const commentsContainer = document.getElementById('existingComments');
+            commentsContainer.innerHTML = report.comments.map(comment => `
+                <div class="comment-item">
+                    <div class="comment-header">
+                        <strong>${comment.author}</strong>
+                        <small class="text-muted">${comment.date}</small>
+                    </div>
+                    <div class="comment-text">${comment.text}</div>
+                </div>
+            `).join('');
+
+            currentReportId = id;
+            new bootstrap.Modal(document.getElementById('commentModal')).show();
+        }
+
+        // Functions called from view modal
+        function gradeFromView() {
+            const viewModal = bootstrap.Modal.getInstance(document.getElementById('viewModal'));
+            viewModal.hide();
+            setTimeout(() => gradeReport(currentReportId), 300);
+        }
+
+        function commentFromView() {
+            const viewModal = bootstrap.Modal.getInstance(document.getElementById('viewModal'));
+            viewModal.hide();
+            setTimeout(() => commentReport(currentReportId), 300);
+        }
+
+        // Grade Form Submission
+        document.getElementById('gradeForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const nilai = parseInt(document.getElementById('gradeValue').value);
+            const grade = document.getElementById('gradeLetter').value;
+            const notes = document.getElementById('gradeNotes').value;
+            const status = document.getElementById('reportStatus').value;
+
+            const reportIndex = tableData.findIndex(r => r.id === currentReportId);
+            if (reportIndex !== -1) {
+                tableData[reportIndex].nilai = nilai;
+                tableData[reportIndex].grade = grade;
+                tableData[reportIndex].status = status;
+                tableData[reportIndex].notes = notes;
+                tableData[reportIndex].gradeText = `${grade} (${nilai})`;
+                tableData[reportIndex].statusClass = getStatusClass(status);
+                tableData[reportIndex].rowClass = getRowClass(status);
+                tableData[reportIndex].gradeClass = getGradeClass(grade);
+            }
+
+            filteredData = [...tableData];
+            renderTable();
+
+            const modal = bootstrap.Modal.getInstance(document.getElementById('gradeModal'));
+            modal.hide();
+            document.getElementById('gradeForm').reset();
+
+            alert('Penilaian berhasil disimpan!');
+        });
+
+        // Comment Form Submission
+        document.getElementById('commentForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const commentText = document.getElementById('newComment').value;
+            const reportIndex = tableData.findIndex(r => r.id === currentReportId);
+
+            if (reportIndex !== -1) {
+                const newComment = {
+                    author: 'Admin',
+                    date: new Date().toLocaleString('id-ID', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    }),
+                    text: commentText
+                };
+
+                tableData[reportIndex].comments.push(newComment);
+            }
+
+            renderTable();
+
+            const modal = bootstrap.Modal.getInstance(document.getElementById('commentModal'));
+            modal.hide();
+            document.getElementById('commentForm').reset();
+
+            alert('Komentar berhasil ditambahkan!');
+        });
+
+        function getStatusClass(status) {
+            switch (status) {
+                case 'Disetujui': return 'status-approved';
+                case 'Revisi': return 'status-revision';
+                case 'Review': return 'status-pending';
+                default: return 'status-pending';
+            }
+        }
+
+        function getRowClass(status) {
+            switch (status) {
+                case 'Disetujui': return 'status-completed';
+                case 'Revisi': return 'status-active';
+                case 'Review': return 'status-pending';
+                default: return 'status-pending';
+            }
+        }
+
+        function getGradeClass(grade) {
+            switch (grade) {
+                case 'A': return 'grade-a';
+                case 'B': return 'grade-b';
+                case 'C': return 'grade-c';
+                case 'D': return 'grade-d';
+                case 'E': return 'grade-e';
+                default: return 'grade-none';
+            }
+        }
+
+        // Initialize table
+        renderTable();
+    </script>
+</body>
+
+</html>
